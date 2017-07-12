@@ -1,8 +1,13 @@
-# web-dev-template
+About Me(PREETHI AYYAMPERUMAL)
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+I am a graduate student at Northeastern University pursuing MS in CS.
+I have undergraduate degree in Computer Science and 4 year work experience in
+Embedded software development and very little in UI development in technologies like Qt,MinGW
+Linux,C and C++ were the techonologies I have predominantly worked on.
+
+This repository contains my Web development Coursework's assignments and Project.
+It will be a work in progress until August 29,2017.
+
+Website Links
+
+Heroku- https://preethi-webdev.herokuapp.com/
