@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <title>Login</title>
-</head>
-<body>
 <div class="container-fluid">
-    <h2>Login</h2>
+    <h2>Register</h2>
 
     <label for="username">Username</label>
     <input name="username"
@@ -24,13 +14,19 @@
            placeholder="f!@#rg5"
            class="form-control"
            id="password"/>
+
+    <label for="password">Verify Password</label>
+    <input name="password"
+           type="password"
+           placeholder="f!@#rg5"
+           class="form-control"
+           id="password2"/>
+
     <a class="btn btn-default btn-primary btn-block"
-       href="profile.html"
-       role="button">Login</a>
-    <a class="btn btn-default btn-success btn-block"
-       href="register.html"
+       href="profile.view.client.html"
        role="button">Register</a>
+    <a class="btn btn-default btn-danger btn-block"
+       href="login.view.client.html"
+       role="button">Cancel</a>
 
 </div>
-</body>
-</html>

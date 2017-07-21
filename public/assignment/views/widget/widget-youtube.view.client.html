@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <title>Widget Edit</title>
-</head>
-<body>
 <div class="pav">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="widget-list.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="navbar-brand" href="widget-list.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
                 <a class="navbar-brand" href="#">Widget Edit</a>
                 <p class="navbar-text pull-right">
-                    <a href="widget-list.html" class="navbar-link"> <span class="white glyphicon glyphicon-ok pull-right"></span>
+                    <a href="widget-list.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-ok pull-right"></span>
                     </a>
                 </p>
 
@@ -23,6 +13,7 @@
         </div><!-- /.navbar-collapse -->
     </nav>
     <div class="container-fluid">
+
         <label for="name">Name</label>
         <input name="name"
                type="text"
@@ -32,22 +23,27 @@
         <label for="text">Text</label>
         <input name="text"
                type="text"
-               value="Test text"
+               placeholder="Test text"
                class="form-control"
-               id="text"/></input>
-        <label for="size">Size</label>
+               id="text"/>
 
-        <select id="size"
-                class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-        </select>
-            <a class="btn btn-default btn-danger btn-block"
-           href="widget-list.html"
+        <label for="url">URL</label>
+        <input name="url"
+               type="url"
+               value="https://www.youtube.com/"
+               class="form-control"
+               id="url"/>
+
+        <label for="width">Width</label>
+        <input name="width"
+               value="100%"
+               type="text"
+               class="form-control"
+               id="width"/>
+
+
+        <a class="btn btn-default btn-danger btn-block"
+           href="widget-list.view.client.html"
            role="button">Delete</a>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -55,7 +51,7 @@
             <div class="container-fluid">
                 <div class="navbar-header navbar-right">
                     <p class="navbar-text pull-right">
-                        <a href="profile.html" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
+                        <a href="../user/profile.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
                         </a>
                     </p>
                 </div>
@@ -64,6 +60,3 @@
     </nav>
 </div>
 
-
-</body>
-</html>
