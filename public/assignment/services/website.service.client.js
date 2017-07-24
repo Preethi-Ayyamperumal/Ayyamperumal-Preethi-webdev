@@ -17,13 +17,11 @@
 
 
         var api={
-            "createUser" : createUser,
-            "findUserById" :findUserById ,
-            "findUserByUsername" :findUserByUsername ,
-            "findUserByCredentials" :findUserByCredentials ,
-            "updateUser" : updateUser,
-            "deleteUser" :deleteUser
-
+            "createWebsite" : createWebsite,
+            "findWebsitesByUser" :findWebsitesByUser ,
+            "findWebsiteById" :findWebsiteById ,
+            "updateWebsite" :updateWebsite ,
+            "deleteWebsite" : deleteWebsite
         };
         return api;
 
