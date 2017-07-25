@@ -31,7 +31,7 @@
         }
 
         function getWidgetIncludeUrl(widgetType) {
-            return "views/widget/templates/widgets/widget-" + widgetType.toLowerCase()+ ".view.client.html";
+            return "views/widget/templates/widgets/widget-" + widgetType+ ".view.client.html";
         }
 
         function editWidget(widgetID){
