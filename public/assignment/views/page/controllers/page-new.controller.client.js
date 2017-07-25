@@ -51,10 +51,16 @@
         }
 
         function loadWidgets(pageId) {
-            $location.url($location.url()+"/"+pageId+"/widget");
+            var pathelements = $location.url().split("/");
+            pathelements.splice(-1,1);
+            pathelements= pathelements.join("/")
+            $location.url(pathelements+"/"+pageId+"/widget");
         }
         function editPage(pageId) {
-            $location.url($location.url()+"/"+pageId+"/");
+            var pathelements = $location.url().split("/");
+            pathelements.splice(-1,1);
+            pathelements= pathelements.join("/")
+            $location.url(pathelements+"/"+pageId+"/");
         }
 
         function newPage() {
