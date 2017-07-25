@@ -8,6 +8,8 @@
         model.chooseWidget = chooseWidget;
         model.loadUserProfile = loadUserProfile;
         model.pid=$routeParams.pid;
+        model.userId=$routeParams.uid;
+
 
         function init() {
         }

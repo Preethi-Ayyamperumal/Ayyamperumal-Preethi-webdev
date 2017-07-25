@@ -6,6 +6,8 @@
     function EditWidgetController($sce ,$location,$routeParams, WidgetService) {
         var model = this;
         model.wgid=$routeParams.wgid;
+        model.userId=$routeParams.uid;
+
         model.saveWidget=saveWidget;
         model.getWidgetIncludeUrl = getWidgetIncludeUrl;
         model.loadWidgets=loadWidgets;

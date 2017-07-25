@@ -6,6 +6,7 @@
     function WidgetListController($sce ,$location,$routeParams, WidgetService) {
         var model = this;
         model.pid=$routeParams.pid;
+        model.userId=$routeParams.uid;
         model.showPages=showPages;
         model.trustHtmlContent = trustHtmlContent;
         model.trustUrlResource = trustUrlResource;
