@@ -27,8 +27,12 @@
         function logoutUser() {
             $location.url("/login");
         }
+        function updateUser(user) {
+            UserService.updateUser(userId,user);
+            loadUserProfile();
+        }
         function loadUserProfile() {
-            $location.url("/profile/" + $rootScope.currentUser);
+            $location.url("/profile/" + userId);
         }
 }
 
