@@ -2,10 +2,10 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../../page/templates/page-list.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                <a class="navbar-brand" href="#">Widgets</a>
+                <a class="navbar-brand" href="" ng-click="model.showPages()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="navbar-brand" >Widgets</a>
                 <p class="navbar-text pull-right">
-                    <a href="widget-choose.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-plus pull-right"></span>
+                    <a href="" ng-click="model.chooseWidget()" class="navbar-link"> <span class="white glyphicon glyphicon-plus pull-right"></span>
                     </a>
                 </p>
 
@@ -13,72 +13,27 @@
         </div><!-- /.navbar-collapse -->
     </nav>
     <div class="container-fluid">
-
-        <div class="pav-widget">
-            <div class="pav-widget-toolbar">
-                <a href="widget-heading.view.client.html">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-                <span class="glyphicon glyphicon-align-justify "></span>
-            </div>
-            <h1>GIZMODO</h1>
+        <div ng-repeat="widget in model.widgets">
+            <div class="pav-widget">
+                <div class="pav-widget-toolbar">
+                    <a href="" ng-click="model.editWidget(widget._id)">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                    <span class="glyphicon glyphicon-align-justify "></span>
+                </div>
+            <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
         </div>
-        <div class="pav-widget">
-            <div class="pav-widget-toolbar">
-                <a href="widget-heading.view.client.html"><span class="glyphicon glyphicon-cog"></span>
-                </a>
-                <span class="glyphicon glyphicon-align-justify "></span>
-            </div>
-            <h3>Thanks to Global Warming We Can Look Forward to Discovering More Bodies Hidden in Glaciers.Maya Rudolph
-                Does a Perfect Impression of Ivanka Trump</h3>
-        </div>
-        <div class="pav-widget">
-            <div class="pav-widget-toolbar">
-                <a href="widget-image.view.client.html"><span class="glyphicon glyphicon-cog"></span></a>
-                <span class="glyphicon glyphicon-align-justify "></span>
-            </div>
-            <img src="https://i.kinja-img.com/gawker-media/image/upload/s--SRjYMLHh--/c_scale,fl_progressive,q_80,w_800/pjg3gjjlkg81zmbvr8he.jpg">
-        </div>
-        <div class="pav-widget">
-            <div class="pav-widget-toolbar">
-                <a href="widget-heading.view.client.html"><span class="glyphicon glyphicon-cog "></span></a>
-                <span class="glyphicon glyphicon-align-justify "></span>
-            </div>
-            <p><a href="http://thehill.com/homenews/house/338881-support-grows-for-smithsonian-museum-of-womens-history"
-                  target="_blank" rel="noopener">The Hill says</a> there’s bipartisan support for the move, reporting
-                that 198 lawmakers have signed on to sponsor legislation—up from 150 at the beginning of June. “I
-                believe that there’s no reason not to support it,” said Democratic representative Carolyn Maloney. This
-                latest drive started in November when, <a href="https://www.washingtonpost.com/news/arts-and-entertainment/wp/2016/11/16/congressional-panel-calls-for-new-smithsonian-museum-of-womens-history/?utm_term=.c3596fb4747d" target="_blank" rel="noopener">per</a> the <em>Washington Post</em>, a congressional panel
-                issued a report in support of the idea and outlining recommendations for how to make it happen. “It
-                helps the country, it helps women, and it’s truly bipartisan,” Maloney added.</p>
-            <p>Of course, one can’t help but wonder what kind of story a “truly bipartisan” women’s history museum will
-                tell. Is there any way to pull this off without being forced to include some gotta hear both sides
-                bullshit about Phyllis Schlafly? (Doing it without federal funds seems like a good start, as long as
-                they don’t have to replace it with, say, corporate sponsors hungry for some of that empty “women’s
-                leadership” shine.) Not to mention it’ll be the definition of a hollow victory if it opens and you can
-                barely get a goddamned IUD anymore. </p>
-        </div>
-        <div class="pav-widget">
-            <div class="pav-widget-toolbar">
-                <a href="widget-youtube.html"> <span class="glyphicon glyphicon-cog"></span>
-                </a><span class="glyphicon glyphicon-align-justify "></span>
-            </div>
-            <div class="pav-video-container">
-                <iframe src="https://www.youtube.com/embed/Wg7v8YIu5Ms" frameborder="0" allowfullscreen></iframe>
-            </div>
         </div>
 
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
             <div class="container-fluid">
                 <div class="navbar-header navbar-right">
                     <p class="navbar-text pull-right">
-                        <a ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
+                        <a href="" ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
                         </a>
                     </p>
                 </div>
             </div>
-        </div>
     </nav>
 </div>

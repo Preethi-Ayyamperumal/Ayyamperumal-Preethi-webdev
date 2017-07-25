@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../../css/styles.css" rel="stylesheet">
-    <title>Widget Edit</title>
-</head>
-<body>
 <div class="pav">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="widget-list.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                <a class="navbar-brand" href="#">Widget Edit</a>
+                <a class="navbar-brand" href="" ng-click="model.loadWidgets()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="navbar-brand">Widget Edit</a>
                 <p class="navbar-text pull-right">
-                    <a href="widget-list.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-ok pull-right"></span>
+                    <a href="" ng-click="model.saveWidget(model.widget)" class="navbar-link"> <span class="white glyphicon glyphicon-ok pull-right"></span>
                     </a>
                 </p>
 
@@ -25,19 +15,21 @@
     <div class="container-fluid">
         <label for="name">Name</label>
         <input name="name"
+               ng-model="model.widget.name"
                type="text"
                placeholder="Widget Name"
                class="form-control"
                id="name"/>
         <label for="text">Text</label>
         <input name="text"
+               ng-model="model.widget.text"
                type="text"
-               value="Test text"
                class="form-control"
                id="text"/></input>
         <label for="size">Size</label>
 
         <select id="size"
+                ng-model="model.widget.size"
                 class="form-control">
             <option>1</option>
             <option>2</option>
@@ -46,8 +38,8 @@
             <option>5</option>
             <option>6</option>
         </select>
-            <a class="btn btn-default btn-danger btn-block"
-           href="widget-list.view.client.html"
+        <a class="btn btn-default btn-danger btn-block"
+               ng-click="model.deleteWidget()"
            role="button">Delete</a>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -55,7 +47,7 @@
             <div class="container-fluid">
                 <div class="navbar-header navbar-right">
                     <p class="navbar-text pull-right">
-                        <a ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
+                        <a href="" ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
                         </a>
                     </p>
                 </div>
@@ -63,7 +55,3 @@
         </div>
     </nav>
 </div>
-
-
-</body>
-</html>
