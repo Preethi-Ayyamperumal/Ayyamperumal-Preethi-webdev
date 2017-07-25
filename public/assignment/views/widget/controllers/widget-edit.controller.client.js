@@ -19,7 +19,7 @@
 
         function getWidgetIncludeUrl() {
             model.widgetType=model.widget.widgetType;
-            return "views/widget/templates/widget-" + model.widgetType + "-edit.view.client.html";
+            return "views/widget/templates/widget-" + model.widgetType.toLowerCase() + "-edit.view.client.html";
         }
         function loadWidgets() {
             var pathelements = $location.url().split("/");

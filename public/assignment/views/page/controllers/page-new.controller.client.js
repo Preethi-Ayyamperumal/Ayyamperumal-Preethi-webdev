@@ -24,7 +24,7 @@
             var _page = PageService.createPage(model.wid,page);
             var pathelements = $location.url().split("/");
             pathelements.splice(-1,1);
-            pathelements= pathelements.join("/")
+            pathelements= pathelements.join("/");
             $location.url(pathelements);
         }
 
@@ -33,7 +33,7 @@
             pathelements.splice(-1,1);
             pathelements.splice(-1,1);
             pathelements.splice(-1,1);
-            pathelements= pathelements.join("/")
+            pathelements= pathelements.join("/");
             $location.url(pathelements);
         }
 
@@ -42,7 +42,7 @@
         {
             var pathelements = $location.url().split("/");
             pathelements.splice(-1,1);
-            pathelements= pathelements.join("/")
+            pathelements= pathelements.join("/");
             $location.url(pathelements);
         }
 
@@ -53,20 +53,20 @@
         function loadWidgets(pageId) {
             var pathelements = $location.url().split("/");
             pathelements.splice(-1,1);
-            pathelements= pathelements.join("/")
+            pathelements= pathelements.join("/");
             $location.url(pathelements+"/"+pageId+"/widget");
         }
         function editPage(pageId) {
             var pathelements = $location.url().split("/");
             pathelements.splice(-1,1);
-            pathelements= pathelements.join("/")
+            pathelements= pathelements.join("/");
             $location.url(pathelements+"/"+pageId+"/");
         }
 
         function newPage() {
             var pathelements = $location.url().split("/");
             pathelements.splice(-1,1);
-            pathelements= pathelements.join("/")
+            pathelements= pathelements.join("/");
             $location.url(pathelements+"/new/");
         }
     }
