@@ -7,22 +7,22 @@
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                         </button>
-                        <a class="navbar-brand" href="page-list.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                        <a class="navbar-brand" ng-click="model.showWebsites()"><span class="glyphicon glyphicon-chevron-left"></span></a>
                         <a class="navbar-brand" href="#">Pages</a>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="page-new.view.client.html"><span class="white glyphicon glyphicon-plus"></span>
+                                <li><a ng-click="model.newPage()"><span class="white glyphicon glyphicon-plus"></span>
                                 </a></li>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div>
 
                     <div class="col-xs-12 col-md-9 pav-split-view-right-header">
-                        <a class="navbar-brand visible-md visible-sm visible-xs" href="page-list.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                        <a class="navbar-brand visible-sm visible-xs" ng-click="model.showPages()"><span class="glyphicon glyphicon-chevron-left"></span></a>
                         <a class="navbar-brand" href="#">Edit Page</a>
                         <p class="navbar-text pull-right">
-                            <a href="page-list.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-ok pull-right"></span>
+                            <a ng-click="model.updatePage(model.page)" class="navbar-link"> <span class="white glyphicon glyphicon-ok pull-right"></span>
                             </a>
                         </p>
                     </div></div></div></div>
@@ -31,34 +31,10 @@
         <div class="row">
             <div class="col-xs-3 visible-md visible-lg pav-split-view-left">
                 <ul class="list-group">
-                    <li type="button" class="list-group-item">
-                        <a href="../../widget/templates/widget-list.view.client.html">Blog Post</a>
-                        <a href="page-edit.view.client.html">
-                            <span class = "glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </li>
-                    <li type="button" class="list-group-item">
-                        <a href="../../widget/templates/widget-list.view.client.html">Blogs</a>
-                        <a href="page-edit.view.client.html">
-                            <span class = "glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </li>
-                    <li type="button" class="list-group-item">
-                        <a href="../../widget/templates/widget-list.view.client.html">Home</a>
-                        <a href="page-edit.view.client.html">
-                            <span class = "glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </li>
-                    <li type="button" class="list-group-item">
-                        <a href="../../widget/templates/widget-list.view.client.html">About</a>
-                        <a href="page-edit.view.client.html">
-                            <span class = "glyphicon glyphicon-cog pull-right"></span>
-                        </a>
-                    </li>
-                    <li type="button" class="list-group-item">
-                        <a href="../../widget/templates/widget-list.view.client.html">Contact Us</a>
-                        <a href="page-edit.view.client.html">
-                            <span class = "glyphicon glyphicon-cog pull-right"></span>
+                    <li ng-repeat="page in model.pages" type="button" class="list-group-item">
+                        <a href="" ng-click="model.loadWidgets(page._id)">{{page.name}}</a>
+                        <a href="" ng-click="model.editPage(page._id)">
+                            <span class="glyphicon glyphicon-cog pull-right"></span>
                         </a>
                     </li>
                 </ul>
@@ -66,18 +42,19 @@
             <div class="col-xs-12 col-md-9 pav-split-view-right">
         <label for="name">Name</label>
         <input name="name"
+               ng-model="model.page.name"
                type="text"
-               value="Blog Post"
                class="form-control"
                id="name"/>
         <label for="title">Title</label>
         <input name="title"
+               ng-model="model.page.description"
                type="text"
                placeholder="Page Title"
                class="form-control"
                id="title"/></input>
         <a class="btn btn-default btn-danger btn-block"
-           href="page-list.view.client.html"
+           ng-click="model.deletePage()"
            role="button">Delete</a>
     </div>
         </div>
@@ -87,7 +64,7 @@
             <div class="container-fluid">
                 <div class="navbar-header navbar-right">
                     <p class="navbar-text pull-right">
-                        <a href="../../user/templates/profile.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
+                        <a ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
                         </a>
                     </p>
                 </div>

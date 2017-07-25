@@ -2,44 +2,20 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="../../website/templates/website-list.view.client.html"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="navbar-brand" ng-click="model.showWebsites()"><span class="glyphicon glyphicon-chevron-left"></span></a>
                 <a class="navbar-brand" href="#">Pages</a>
                 <p class="navbar-text pull-right">
-                    <a href="page-new.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-plus pull-right"></span>
+                    <a ng-click="model.newPage()" class="navbar-link"> <span class="white glyphicon glyphicon-plus pull-right"></span>
                     </a>
                 </p>
             </div></div>
     </nav>
 <div class="container-fluid">
     <ul class="list-group">
-        <li type="button" class="list-group-item">
-            <a href="../../widget/templates/widget-list.view.client.html">Blog Post</a>
-            <a href="page-edit.view.client.html">
-                <span class = "glyphicon glyphicon-cog pull-right"></span>
-            </a>
-        </li>
-        <li type="button" class="list-group-item">
-            <a href="../../widget/templates/widget-list.view.client.html">Blogs</a>
-            <a href="page-edit.view.client.html">
-                <span class = "glyphicon glyphicon-cog pull-right"></span>
-            </a>
-        </li>
-        <li type="button" class="list-group-item">
-            <a href="../../widget/templates/widget-list.view.client.html">Home</a>
-            <a href="page-edit.view.client.html">
-                <span class = "glyphicon glyphicon-cog pull-right"></span>
-            </a>
-        </li>
-        <li type="button" class="list-group-item">
-            <a href="../../widget/templates/widget-list.view.client.html">About</a>
-            <a href="page-edit.view.client.html">
-                <span class = "glyphicon glyphicon-cog pull-right"></span>
-            </a>
-        </li>
-        <li type="button" class="list-group-item">
-            <a href="../../widget/templates/widget-list.view.client.html">Contact Us</a>
-            <a href="page-edit.view.client.html">
-                <span class = "glyphicon glyphicon-cog pull-right"></span>
+        <li ng-repeat="page in model.pages" type="button" class="list-group-item">
+            <a href="" ng-click="model.loadWidgets(page._id)">{{page.name}}</a>
+            <a href="" ng-click="model.editPage(page._id)">
+                <span class="glyphicon glyphicon-cog pull-right"></span>
             </a>
         </li>
     </ul>
@@ -49,7 +25,7 @@
             <div class="container-fluid">
                 <div class="navbar-header navbar-right">
                     <p class="navbar-text pull-right">
-                        <a href="../../user/templates/profile.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
+                        <a ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
                         </a>
                     </p>
                 </div>

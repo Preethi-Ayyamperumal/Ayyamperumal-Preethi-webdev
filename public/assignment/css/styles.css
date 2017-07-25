@@ -4,11 +4,6 @@ input,textarea,select.form-control{
 body {
     padding-top: 60px;
 }
-.pav .navbar-default {
-    background-color: #286090;
-    border-color: #286090;
-}
-
 .pav .navbar-default .navbar-brand {
     color: white;
 }
@@ -22,6 +17,7 @@ body {
 .pav .navbar-default {
     background-color: #286090;
     border-color: #286090;
+    background-image: none;
 }
 
 .pav .navbar-default .navbar-brand {
@@ -55,7 +51,7 @@ body {
 .pav .smalltext{
     font-size: 10px;
 }
-.pav bold{
+.pav .bold{
     font-weight:bold;
 }
 

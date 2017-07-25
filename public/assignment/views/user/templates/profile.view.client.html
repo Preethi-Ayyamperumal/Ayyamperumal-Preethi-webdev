@@ -13,18 +13,21 @@
 
     <label for="firstName">First Name</label>
     <input name="firstName"
+           ng-model="model.user.firstName"
            type="text"
            placeholder="alice"
            class="form-control"
            id="firstName"/>
     <label for="lastName">Last Name</label>
     <input name="lastName"
+           ng-model="model.user.lastName"
            type="text"
            placeholder="wonderland"
            class="form-control"
            id="lastName"/>
     <label for="username">Username</label>
     <input name="username"
+           ng-model="model.user.username"
            type="text"
            readonly
            placeholder="alice"
@@ -32,6 +35,7 @@
            id="username"/>
     <label for="email">Email</label>
     <input name="email"
+           ng-model="model.user.username"
            type="email"
            placeholder="alice@wonderland.com"
            class="form-control"
@@ -42,10 +46,10 @@
            class="form-control"
            id="dob"/>
     <a class="btn btn-default btn-primary btn-block"
-       href="../../website/templates/website-list.view.client.html"
+       ng_click="model.loadUserWebsites()"
        role="button">Websites</a>
     <a class="btn btn-default btn-danger btn-block"
-       href="login.view.client.html"
+       ng_click="model.logoutUser()"
        role="button">Logout</a>
 
 </div>
@@ -54,7 +58,7 @@
         <div class="container-fluid">
             <div class="navbar-header navbar-right">
                 <p class="navbar-text pull-right">
-                    <a href="profile.view.client.html" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
+                    <a ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
                     </a>
                 </p>
             </div>
