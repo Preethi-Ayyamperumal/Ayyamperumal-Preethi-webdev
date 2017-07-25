@@ -21,7 +21,8 @@
         init();
 
         function updateWebsite(website) {
-
+            WebsiteService.updateWebsite(model.wid,website);
+            showWebsites();
         }
         function addWebsite() {
             var pathelements = $location.url().split("/");
