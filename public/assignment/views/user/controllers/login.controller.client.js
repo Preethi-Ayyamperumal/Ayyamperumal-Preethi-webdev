@@ -16,7 +16,7 @@
 
         function login(user) {
             if (!user) {
-                model.errorMessage = "User not found";
+                model.errorMessage = "Username and Password Empty";
                 return;
             }
             user = UserService.findUserByCredentials(user.username, user.password);
