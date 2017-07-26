@@ -4,7 +4,7 @@
         .module("WebAppMaker")
         .controller("LoginController", LoginController);
 
-    function LoginController($location, UserService, $rootScope) {
+    function LoginController($location, UserService) {
         var model = this;
         model.login = login;
         model.register = register;
@@ -21,9 +21,8 @@
             }
             user = UserService.findUserByCredentials(user.username, user.password);
             if (user === null) {
-                model.errorMessage = "User not found";
+                model.errorMessage = "Username/Password Incorrect";
             } else {
-                $rootScope.currentUser = user._id;
                 $location.url("profile/" + user._id);
             }
         }

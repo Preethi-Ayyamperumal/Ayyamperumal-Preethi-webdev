@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <h2>Login</h2>
-
+    <div ng-show="model.errorMessage" class="alert alert-danger">
+        {{model.errorMessage}}
+    </div>
     <label for="username">Username</label>
     <input name="username"
            ng-model="model.user.username"

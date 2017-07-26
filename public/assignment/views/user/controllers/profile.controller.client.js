@@ -4,7 +4,7 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController)
 
-    function ProfileController($location, $routeParams, UserService, $rootScope) {
+    function ProfileController($location, $routeParams, UserService) {
         var model = this;
         model.updateUser = updateUser;
         model.logoutUser = logoutUser;

@@ -14,16 +14,21 @@
         init();
 
         function register(newuser) {
+            if(!newuser)
+            {
+                model.errorMessage = "Enter Username and Passwords";
+                return;
+            }
             var _user = UserService.findUserByUsername(newuser.username);
             if (!_user) {
                 if (newuser.password === newuser.password2) {
                     var user = UserService.createUser(newuser);
                     $location.url("/profile/" + user._id);
                 } else {
-                    model.error = "Passwords dosen't match";
+                    model.errorMessage = "Passwords doesn't match";
                 }
             } else {
-                model.error = "User already exists";
+                model.errorMessage = "Username already exists";
             }
         }
     }
