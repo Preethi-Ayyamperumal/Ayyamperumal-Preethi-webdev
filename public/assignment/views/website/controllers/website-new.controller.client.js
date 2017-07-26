@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("NewWebsiteController", NewWebsiteController);
 
-    function NewWebsiteController($location, $routeParams, WebsiteService, $rootScope) {
+    function NewWebsiteController($location, $routeParams, WebsiteService) {
         var model = this;
         model.addWebsite = addWebsite;
         model.loadUserProfile = loadUserProfile;
@@ -47,7 +47,7 @@
         }
 
         function loadUserProfile() {
-            $location.url("/profile/" + $rootScope.currentUser);
+            $location.url("/profile/" + model.uid );
         }
 
         function showWebsites() {

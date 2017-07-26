@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("NewPageController", NewPageController);
 
-    function NewPageController($location, $routeParams, PageService, $rootScope) {
+    function NewPageController($location, $routeParams, PageService) {
         var model = this;
         model.addPage = addPage;
         model.showPages = showPages;
@@ -13,6 +13,7 @@
         model.loadWidgets = loadWidgets;
         model.editPage = editPage;
         function init() {
+            model.userId=$routeParams.uid;
             model.wid = $routeParams.wid;
             model.pages = PageService.findPageByWebsiteId(model.wid);
         }
@@ -46,7 +47,7 @@
         }
 
         function loadUserProfile() {
-            $location.url("/profile/" + $rootScope.currentUser);
+            $location.url("/profile/" + model.userId);
         }
 
         function loadWidgets(pageId) {

@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .controller("EditWebsiteController", EditWebsiteController);
 
-    function EditWebsiteController($location, $routeParams, WebsiteService, $rootScope) {
+    function EditWebsiteController($location, $routeParams, WebsiteService) {
         var model = this;
         model.deleteWebsite = deleteWebsite;
         model.updateWebsite = updateWebsite;
@@ -60,7 +60,7 @@
         }
 
         function loadUserProfile() {
-            $location.url("/profile/" + $rootScope.currentUser);
+            $location.url("/profile/" + model.userId);
         }
     }
 })();
