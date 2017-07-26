@@ -2,10 +2,12 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="" ng-click="model.showPages()"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                <a class="navbar-brand" >Widgets</a>
+                <a class="navbar-brand" href="" ng-click="model.showPages()"><span
+                        class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="navbar-brand">Widgets</a>
                 <p class="navbar-text pull-right">
-                    <a href="" ng-click="model.chooseWidget()" class="navbar-link"> <span class="white glyphicon glyphicon-plus pull-right"></span>
+                    <a href="" ng-click="model.chooseWidget()" class="navbar-link"> <span
+                            class="white glyphicon glyphicon-plus pull-right"></span>
                     </a>
                 </p>
 
@@ -21,19 +23,20 @@
                     </a>
                     <span class="glyphicon glyphicon-align-justify "></span>
                 </div>
-            <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
-        </div>
+                <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
+            </div>
         </div>
 
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
-            <div class="container-fluid">
-                <div class="navbar-header navbar-right">
-                    <p class="navbar-text pull-right">
-                        <a href="" ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
-                        </a>
-                    </p>
-                </div>
+        <div class="container-fluid">
+            <div class="navbar-header navbar-right">
+                <p class="navbar-text pull-right">
+                    <a href="" ng_click="model.loadUserProfile()" class="navbar-link"> <span
+                            class="white glyphicon glyphicon-user pull-right"></span>
+                    </a>
+                </p>
             </div>
+        </div>
     </nav>
 </div>

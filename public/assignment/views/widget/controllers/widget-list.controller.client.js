@@ -3,27 +3,29 @@
         .module("WebAppMaker")
         .controller("WidgetListController", WidgetListController);
 
-    function WidgetListController($sce ,$location,$routeParams, WidgetService) {
+    function WidgetListController($sce, $location, $routeParams, WidgetService) {
         var model = this;
-        model.pid=$routeParams.pid;
-        model.userId=$routeParams.uid;
-        model.showPages=showPages;
+        model.showPages = showPages;
         model.trustHtmlContent = trustHtmlContent;
         model.trustUrlResource = trustUrlResource;
         model.getWidgetIncludeUrl = getWidgetIncludeUrl;
-        model.editWidget=editWidget;
-        model.chooseWidget=chooseWidget;
+        model.editWidget = editWidget;
+        model.chooseWidget = chooseWidget;
         model.loadUserProfile = loadUserProfile;
 
         function init() {
+            model.pid = $routeParams.pid;
+            model.userId = $routeParams.uid;
             model.widgets = WidgetService.findWidgetsByPageId(model.pid);
+
         }
+
         init();
 
         function trustUrlResource(url) {
             var youtubeUrl = "https://www.youtube.com/embed/";
             var urlParts = url.split("/");
-            youtubeUrl += urlParts[urlParts.length-1];
+            youtubeUrl += urlParts[urlParts.length - 1];
             return $sce.trustAsResourceUrl(youtubeUrl);
         }
 
@@ -32,24 +34,22 @@
         }
 
         function getWidgetIncludeUrl(widgetType) {
-            return "views/widget/templates/widgets/widget-" + widgetType+ ".view.client.html";
+            return "views/widget/templates/widgets/widget-" + widgetType + ".view.client.html";
         }
 
-        function editWidget(widgetID){
-            $location.url($location.url()+"/"+widgetID);
+        function editWidget(widgetID) {
+            $location.url($location.url() + "/" + widgetID);
         }
 
-        function chooseWidget()
-        {
-            $location.url( $location.url()+"/new/");
+        function chooseWidget() {
+            $location.url($location.url() + "/new/");
         }
 
-        function showPages()
-        {
+        function showPages() {
             var pathelements = $location.url().split("/");
-            pathelements.splice(-1,1);
-            pathelements.splice(-1,1);
-            pathelements= pathelements.join("/")
+            pathelements.splice(-1, 1);
+            pathelements.splice(-1, 1);
+            pathelements = pathelements.join("/")
             $location.url(pathelements);
         }
 

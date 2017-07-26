@@ -2,30 +2,34 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" ng-click="model.showWebsites()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="navbar-brand" ng-click="model.showWebsites()"><span
+                        class="glyphicon glyphicon-chevron-left"></span></a>
                 <a class="navbar-brand">Pages</a>
                 <p class="navbar-text pull-right">
-                    <a ng-click="model.newPage()" class="navbar-link"> <span class="white glyphicon glyphicon-plus pull-right"></span>
+                    <a ng-click="model.newPage()" class="navbar-link"> <span
+                            class="white glyphicon glyphicon-plus pull-right"></span>
                     </a>
                 </p>
-            </div></div>
+            </div>
+        </div>
     </nav>
-<div class="container-fluid">
-    <ul class="list-group">
-        <li ng-repeat="page in model.pages" type="button" class="list-group-item">
-            <a href="" ng-click="model.loadWidgets(page._id)">{{page.name}}</a>
-            <a href="" ng-click="model.editPage(page._id)">
-                <span class="glyphicon glyphicon-cog pull-right"></span>
-            </a>
-        </li>
-    </ul>
-</div>
+    <div class="container-fluid">
+        <ul class="list-group">
+            <li ng-repeat="page in model.pages" type="button" class="list-group-item">
+                <a href="" ng-click="model.loadWidgets(page._id)">{{page.name}}</a>
+                <a href="" ng-click="model.editPage(page._id)">
+                    <span class="glyphicon glyphicon-cog pull-right"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
             <div class="container-fluid">
                 <div class="navbar-header navbar-right">
                     <p class="navbar-text pull-right">
-                        <a ng_click="model.loadUserProfile()" class="navbar-link"> <span class="white glyphicon glyphicon-user pull-right"></span>
+                        <a ng_click="model.loadUserProfile()" class="navbar-link"> <span
+                                class="white glyphicon glyphicon-user pull-right"></span>
                         </a>
                     </p>
                 </div>

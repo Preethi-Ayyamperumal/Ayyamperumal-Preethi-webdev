@@ -4,17 +4,17 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController)
 
-    function ProfileController($location,$routeParams, UserService,$rootScope) {
+    function ProfileController($location, $routeParams, UserService, $rootScope) {
         var model = this;
-        var userId = $routeParams.uid;
-
         model.updateUser = updateUser;
         model.logoutUser = logoutUser;
-        model.loadUserWebsites =loadUserWebsites;
+        model.loadUserWebsites = loadUserWebsites;
         model.loadUserProfile = loadUserProfile;
         function init() {
-            model.user = UserService.findUserById(userId);
+            model.userId = $routeParams.uid;
+            model.user = UserService.findUserById(model.userId);
         }
+
         init();
 
         function updateUser(user) {
@@ -22,18 +22,21 @@
         }
 
         function loadUserWebsites() {
-                $location.url($location.url()+"/website/");
+            $location.url($location.url() + "/website/");
         }
+
         function logoutUser() {
             $location.url("/login");
         }
+
         function updateUser(user) {
-            UserService.updateUser(userId,user);
+            UserService.updateUser(model.userId, user);
             loadUserProfile();
         }
+
         function loadUserProfile() {
-            $location.url("/profile/" + userId);
+            $location.url("/profile/" + model.userId);
         }
-}
+    }
 
 })();
