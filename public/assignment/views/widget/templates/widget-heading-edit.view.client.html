@@ -27,17 +27,11 @@
                class="form-control"
                id="text"/></input>
         <label for="size">Size</label>
-
-        <select id="size"
-                ng-model="model.widget.size"
-                class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-        </select>
+        <input name="size"
+               ng-model="model.widget.size"
+               type="text"
+               class="form-control"
+               id="size"/></input>
         <a class="btn btn-default btn-danger btn-block"
                ng-click="model.deleteWidget()"
            role="button">Delete</a>
