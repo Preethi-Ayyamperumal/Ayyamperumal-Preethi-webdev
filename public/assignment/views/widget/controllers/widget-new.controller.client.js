@@ -12,6 +12,7 @@
         function init() {
             model.pid = $routeParams.pid;
             model.userId = $routeParams.uid;
+            model.wId = $routeParams.wid;
         }
 
         init();
@@ -20,11 +21,14 @@
         function chooseWidget(type) {
             var widget = {};
             widget.widgetType = type;
-            widget = WidgetService.createWidget(model.pid, widget);
-            var pathelements = $location.url().split("/");
-            pathelements.splice(-1, 1);
-            pathelements = pathelements.join("/");
-            $location.url(pathelements + "/" + widget._id);
+            WidgetService.createWidget(model.userId,model.wId,model.pid, widget)
+                .then(function (_widget) {
+                    var pathelements = $location.url().split("/");
+                    pathelements.splice(-1, 1);
+                    pathelements = pathelements.join("/");
+                    $location.url(pathelements + "/" + _widget._id);
+                });
+
         }
 
         function loadUserProfile() {

@@ -15,9 +15,12 @@
 
         function init() {
             model.pid = $routeParams.pid;
+            model.wId = $routeParams.wid;
             model.userId = $routeParams.uid;
-            model.widgets = WidgetService.findWidgetsByPageId(model.pid);
-
+            WidgetService.findWidgetsByPageId(model.userId,model.wId,model.pid)
+                .then(function(widgets){
+                    model.widgets =widgets;
+                });
         }
 
         init();
