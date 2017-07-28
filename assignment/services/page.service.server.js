@@ -7,10 +7,10 @@ var pages = [
 ];
 
 // http handlers
-app.get("/api/user/:userId/website/:wId/page", findPagesByWebsiteId);
-app.get("/api/user/:userId/website/:wId/page/:pId", findPageById);
-app.post("/api/user/:userId/website/:wId/page", createPage);
-app.put("/api/user/:userId/website/:wId/page/:pId", updatePage);
+app.get("/api/website/:wId/page", findPagesByWebsiteId);
+app.get("/api/page/:pId", findPageById);
+app.post("/api/website/:wId/page", createPage);
+app.put("/api/page/:pId", updatePage);
 
 function createPage(req, res) {
     var page = req.body;

@@ -33,16 +33,16 @@
                 });
         }
 
-        function findWebsiteById(userId,websiteId) {
-            var url="/api/user/"+userId+"/website/"+websiteId;
+        function findWebsiteById(websiteId) {
+            var url="/api/website/"+websiteId;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 });
         }
 
-        function updateWebsite(userId,websiteId, website) {
-            var url="/api/user/"+userId+"/website/"+websiteId;
+        function updateWebsite(websiteId, website) {
+            var url="/api/website/"+websiteId;
             return $http.put(url,website)
                 .then(function (response) {
                     return response.data;

@@ -9,9 +9,9 @@ var users = [
 
 // http handlers
 app.get("/api/users", getAllUsers);
-app.get("/api/user/:userId", getUserById);
+app.get("/api/user/:userId", findUserById);
 app.get("/api/user", findUser);
-app.post("/api/user", registerUser);
+app.post("/api/user", createUser);
 app.put("/api/user/:userId", updateUser);
 
 function updateUser(req, res) {
@@ -28,7 +28,7 @@ function updateUser(req, res) {
     res.status(404).json({ error: 'message' });
 }
 
-function registerUser(req, res) {
+function createUser(req, res) {
     var user = req.body;
     user._id = (new Date()).getTime() + "";
     users.push(user);
@@ -63,7 +63,7 @@ function getAllUsers(req, res) {
     res.json(users);
 }
 
-function getUserById(req, res) {
+function findUserById(req, res) {
     for(var u in users) {
         if(users[u]._id === req.params.userId) {
             res.json(users[u]);

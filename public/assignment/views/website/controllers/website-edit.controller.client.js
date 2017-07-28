@@ -20,7 +20,7 @@
                     model.websites =websites;
                 });
 
-            WebsiteService.findWebsiteById(model.userId,model.wid)
+            WebsiteService.findWebsiteById(model.wid)
                 .then(function(website){
                     model.website =website;
                 });
@@ -30,7 +30,7 @@
         init();
 
         function updateWebsite(website) {
-            WebsiteService.updateWebsite(model.userId,model.wid, website)
+            WebsiteService.updateWebsite(model.wid, website)
                 .then(function (response) {
                     showWebsites();
                 });

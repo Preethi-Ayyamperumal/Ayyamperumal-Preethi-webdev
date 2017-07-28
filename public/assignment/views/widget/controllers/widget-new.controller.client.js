@@ -21,7 +21,7 @@
         function chooseWidget(type) {
             var widget = {};
             widget.widgetType = type;
-            WidgetService.createWidget(model.userId,model.wId,model.pid, widget)
+            WidgetService.createWidget(model.pid, widget)
                 .then(function (_widget) {
                     var pathelements = $location.url().split("/");
                     pathelements.splice(-1, 1);

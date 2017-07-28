@@ -14,32 +14,32 @@
         };
         return api;
 
-        function createWidget(userId,websiteId,pageId, widget) {
+        function createWidget(pageId, widget) {
             widget.pageId = pageId;
-            var url="/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
+            var url="/api/page/"+pageId+"/widget";
             return $http.post(url,widget)
                 .then(function (response) {
                     return response.data;});
         }
 
-        function findWidgetsByPageId(userId,websiteId,pageId) {
-            var url="/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/";
+        function findWidgetsByPageId(pageId) {
+            var url="/api/page/"+pageId+"/widget/";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;});
 
         }
 
-        function findWidgetById(userId,websiteId,pageId,widgetId) {
-            var url="/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+        function findWidgetById(widgetId) {
+            var url="/api/widget/"+widgetId;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;});
 
         }
 
-        function updateWidget(userId,websiteId,pageId,widgetId, widget) {
-            var url="/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+        function updateWidget(widgetId, widget) {
+            var url="/api/widget/"+widgetId;
             return $http.put(url,widget)
                 .then(function (response) {
                     return response.data;});

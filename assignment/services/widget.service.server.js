@@ -14,10 +14,10 @@ var widgets = [
     }
 ];
 // http handlers
-app.get("/api/user/:userId/website/:wId/page/:pId/widget", findWidgetsByPageId);
-app.get("/api/user/:userId/website/:wId/page/:pId/widget/:widgetId", findWidgetById);
-app.post("/api/user/:userId/website/:wId/page/:pId/widget",createWidget );
-app.put("/api/user/:userId/website/:wId/page/:pId/widget/:widgetId", updateWidget);
+app.get("/api/page/:pId/widget", findWidgetsByPageId);
+app.get("/api/widget/:widgetId", findWidgetById);
+app.post("/api/page/:pId/widget",createWidget );
+app.put("/api/widget/:widgetId", updateWidget);
 
 function createWidget(req, res) {
     var widget = req.body;

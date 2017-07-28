@@ -14,9 +14,7 @@
         function init() {
             model.wgid = $routeParams.wgid;
             model.userId = $routeParams.uid;
-            model.wId = $routeParams.wid;
-            model.pId = $routeParams.pid;
-            WidgetService.findWidgetById(model.userId,model.wId,model.pId,model.wgid)
+            WidgetService.findWidgetById(model.wgid)
                 .then(function(widget){
                         model.widget =widget;
             });
@@ -39,7 +37,7 @@
         }
 
         function saveWidget(widget) {
-            WidgetService.updateWidget(model.userId,model.wId,model.pId,model.wgid, widget)
+            WidgetService.updateWidget(model.wgid, widget)
                 .then(function(resp){
                     loadWidgets();
                 });

@@ -15,7 +15,7 @@
         function init() {
             model.userId=$routeParams.uid;
             model.wid = $routeParams.wid;
-            PageService.findPagesByWebsiteId(model.userId,model.wid)
+            PageService.findPagesByWebsiteId(model.wid)
                 .then(function (pages) {
                     model.pages =pages;
                 });
@@ -25,7 +25,7 @@
 
 
         function addPage(page) {
-            PageService.createPage(model.userId, model.wid, page)
+            PageService.createPage(model.wid, page)
                 .then(function (response) {
                     var pathelements = $location.url().split("/");
                     pathelements.splice(-1, 1);

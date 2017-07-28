@@ -14,32 +14,32 @@
         };
         return api;
 
-        function createPage(userId,websiteId, page) {
+        function createPage(websiteId, page) {
             page.websiteId=websiteId;
-            var url="/api/user/"+userId+"/website/"+websiteId+"/page";
+            var url="/api/website/"+websiteId+"/page";
             return $http.post(url,page)
                 .then(function (response) {
                     return response.data;
                 });
 
         }
-        function findPagesByWebsiteId(userId,websiteId)  {
-            var url="/api/user/"+userId+"/website/"+websiteId+"/page";
+        function findPagesByWebsiteId(websiteId)  {
+            var url="/api/website/"+websiteId+"/page";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 });
 
         }
-        function findPageById(userId,websiteId,pageId)   {
-            var url="/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId;
+        function findPageById(pageId)   {
+            var url="/api/page/"+pageId;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
                 });
         }
-        function updatePage(userId,websiteId,pageId, page)    {
-            var url="/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId;
+        function updatePage(pageId, page)    {
+            var url="/api/page/"+pageId;
             return $http.put(url,page)
                 .then(function (response) {
                     return response.data;

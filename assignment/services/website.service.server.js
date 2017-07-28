@@ -12,9 +12,9 @@ var websites = [
 
 // http handlers
 app.get("/api/user/:userId/website", getUserWebsites);
-app.get("/api/user/:userId/website/:wId", getWebsiteById);
+app.get("/api/website/:wId", getWebsiteById);
 app.post("/api/user/:userId/website", createWebsite);
-app.put("/api/user/:userId/website/:wId", updateWebsite);
+app.put("/api/website/:wId", updateWebsite);
 
 function updateWebsite(req, res) {
     var websiteId = req.params.wId;
