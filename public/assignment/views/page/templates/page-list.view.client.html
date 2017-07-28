@@ -14,14 +14,7 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <ul class="list-group">
-            <li ng-repeat="page in model.pages" type="button" class="list-group-item">
-                <a href="" ng-click="model.loadWidgets(page._id)">{{page.name}}</a>
-                <a href="" ng-click="model.editPage(page._id)">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-        </ul>
+        <div ng-include="'views/page/templates/page-list.component.client.html'"></div>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">

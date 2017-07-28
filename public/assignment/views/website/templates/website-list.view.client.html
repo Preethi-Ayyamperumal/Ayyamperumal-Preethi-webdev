@@ -14,15 +14,7 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <ul class="list-group">
-
-            <li ng-repeat="website in model.websites" type="button" class="list-group-item">
-                <a href="" ng-click="model.loadPages(website._id)">{{website.name}}</a>
-                <a href="" ng-click="model.editWebsite(website._id)">
-                    <span class="glyphicon glyphicon-cog pull-right"></span>
-                </a>
-            </li>
-        </ul>
+        <div ng-include="'views/website/templates/website-list.component.client.html'"></div>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
