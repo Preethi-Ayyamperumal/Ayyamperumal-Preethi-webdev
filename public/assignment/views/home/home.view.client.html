@@ -1,0 +1,20 @@
+<div class="pav">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="#">Home</a></li>
+                <li><a class="navbar-brand" ng-show="!currentUser" href="#!/login">Login</a></li>
+                <li><a class="navbar-brand" ng-show="!currentUser" href="#!/register">Register</a></li>
+                <li><a class="navbar-brand" ng-show="currentUser"  href="#!/profile/{{currentUser._id}}">Profile</a></li>
+                <li><a class="navbar-brand" ng-show="currentUser"  href="#!/logout">Logout</a></li>
+                <li><a class="navbar-brand" ng-show="currentUser.isAdmin" href="#!/admin">Admin</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <h1>Website Builder</h1>
+    <h3>This website enables users to build and maintain their own websites.</h3></div>
+</div>
