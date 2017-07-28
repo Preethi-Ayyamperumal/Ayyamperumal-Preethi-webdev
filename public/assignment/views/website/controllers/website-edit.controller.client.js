@@ -15,15 +15,25 @@
         function init() {
             model.userId = $routeParams.uid;
             model.wid = $routeParams.wid;
-            model.websites = WebsiteService.findWebsitesByUser(model.userId);
-            model.website = WebsiteService.findWebsiteById(model.wid);
+            WebsiteService.findWebsitesByUser(model.userId)
+                .then(function(websites){
+                    model.websites =websites;
+                });
+
+            WebsiteService.findWebsiteById(model.userId,model.wid)
+                .then(function(website){
+                    model.website =website;
+                });
+
         }
 
         init();
 
         function updateWebsite(website) {
-            WebsiteService.updateWebsite(model.wid, website);
-            showWebsites();
+            WebsiteService.updateWebsite(model.userId,model.wid, website)
+                .then(function (response) {
+                    showWebsites();
+                });
         }
 
         function addWebsite() {
@@ -55,8 +65,10 @@
         }
 
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(model.wid);
-            window.history.back();
+            WebsiteService.deleteWebsite(model.wid)
+                .then(function (response) {
+                    window.history.back();
+                });
         }
 
         function loadUserProfile() {

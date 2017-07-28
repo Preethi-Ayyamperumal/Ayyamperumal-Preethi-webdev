@@ -13,18 +13,24 @@
         model.showWebsites = showWebsites;
 
         function init() {
-            model.uid = $routeParams.uid;
-            model.websites = WebsiteService.findWebsitesByUser(model.uid);
+            model.userId = $routeParams.uid;
+            WebsiteService.findWebsitesByUser(model.userId)
+                .then(function(websites){
+                    model.websites =websites;
+                });
         }
 
         init();
 
         function addWebsite(website) {
-            var _website = WebsiteService.createWebsite(model.uid, website);
-            var pathelements = $location.url().split("/");
-            pathelements.splice(-1, 1);
-            pathelements = pathelements.join("/")
-            $location.url(pathelements);
+            WebsiteService.createWebsite(model.userId, website)
+                .then(function(response){
+                    var pathelements = $location.url().split("/");
+                    pathelements.splice(-1, 1);
+                    pathelements = pathelements.join("/")
+                    $location.url(pathelements);
+                });
+
         }
 
         function addNewWebsite() {
@@ -47,7 +53,7 @@
         }
 
         function loadUserProfile() {
-            $location.url("/profile/" + model.uid );
+            $location.url("/profile/" + model.userId );
         }
 
         function showWebsites() {
