@@ -12,14 +12,17 @@
         model.loadUserProfile = loadUserProfile;
         function init() {
             model.userId = $routeParams.uid;
-            model.user = UserService.findUserById(model.userId);
+            UserService.findUserById(model.userId)
+                .then(function (user) {
+                    model.user = user;
+                    if(user.dob){
+                        model.user.dob = new Date(user.dob);
+                    }
+                });
         }
 
         init();
 
-        function updateUser(user) {
-            UserService.updateUser(user._id, user);
-        }
 
         function loadUserWebsites() {
             $location.url($location.url() + "/website/");
@@ -30,8 +33,10 @@
         }
 
         function updateUser(user) {
-            UserService.updateUser(model.userId, user);
-            loadUserProfile();
+            UserService.updateUser(model.userId, user)
+                .then(function (response) {
+                    loadUserProfile();
+                })
         }
 
         function loadUserProfile() {

@@ -19,13 +19,15 @@
                 model.errorMessage = "Username and Password Empty";
                 return;
             }
-            user = UserService.findUserByCredentials(user.username, user.password);
-            if (user === null) {
-                model.errorMessage = "Username/Password Incorrect";
-            } else {
-                $rootScope.currentUser=user;
-                $location.url("profile/" + user._id);
-            }
+            user = UserService.findUserByCredentials(user.username, user.password)
+                .then(function (user) {
+                    if (user.hasOwnProperty('error')) {
+                        model.errorMessage = "Username/Password Incorrect";
+                    } else {
+                        $rootScope.currentUser = user;
+                        $location.url("profile/" + user._id);
+                    }
+                });
         }
 
         function register() {

@@ -14,22 +14,31 @@
         init();
 
         function register(newuser) {
-            if(!newuser)
+            if(!newuser || (!newuser.username) || (!newuser.password) || (!newuser.password2) )
             {
                 model.errorMessage = "Enter Username and Passwords";
                 return;
             }
-            var _user = UserService.findUserByUsername(newuser.username);
-            if (!_user) {
-                if (newuser.password === newuser.password2) {
-                    var user = UserService.createUser(newuser);
-                    $location.url("/profile/" + user._id);
-                } else {
-                    model.errorMessage = "Passwords doesn't match";
-                }
-            } else {
-                model.errorMessage = "Username already exists";
+            if(newuser.password !=  newuser.password2 )
+            {
+                model.errorMessage = "Passwords doesn't match";
+                return;
             }
+
+            UserService.findUserByUsername(newuser.username)
+              .then(function (_user) {
+                       if(_user.hasOwnProperty('error')) {
+
+                           return UserService.createUser(newuser)
+                       } else {
+                           model.errorMessage = "User already exists";
+                           return;
+                       }})
+              .then(function (_user){
+                  if(_user)
+                  {
+                      $location.url("/profile/"+_user._id);}
+        });
         }
     }
 })();
