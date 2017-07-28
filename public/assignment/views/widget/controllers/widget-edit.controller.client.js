@@ -44,8 +44,10 @@
         }
 
         function deleteWidget() {
-            WidgetService.deleteWidget(model.wgid);
-            loadWidgets();
+            WidgetService.deleteWidget(model.wgid)
+            .then(function(resp){
+                loadWidgets();
+            });
         }
 
         function loadUserProfile() {

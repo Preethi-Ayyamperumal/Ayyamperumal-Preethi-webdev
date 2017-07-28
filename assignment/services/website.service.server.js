@@ -15,6 +15,7 @@ app.get("/api/user/:userId/website", getUserWebsites);
 app.get("/api/website/:wId", getWebsiteById);
 app.post("/api/user/:userId/website", createWebsite);
 app.put("/api/website/:wId", updateWebsite);
+app.delete("/api/website/:wId", deleteWebsite);
 
 function updateWebsite(req, res) {
     var websiteId = req.params.wId;
@@ -55,4 +56,19 @@ function getWebsiteById(req, res) {
         }
     }
     res.status(200).json({ error: 'message' });
+}
+
+function deleteWebsite(req, res) {
+    var websiteId = req.params.wId;
+    var index = -1;
+    for (var w in websites) {
+        if (websites[w]._id === websiteId) {
+            index = w;
+            break;
+        }
+    }
+    if (index > -1) {
+        websites.splice(index, 1);
+    }
+    res.json({});
 }

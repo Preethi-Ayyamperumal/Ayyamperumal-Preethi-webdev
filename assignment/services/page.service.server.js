@@ -11,6 +11,8 @@ app.get("/api/website/:wId/page", findPagesByWebsiteId);
 app.get("/api/page/:pId", findPageById);
 app.post("/api/website/:wId/page", createPage);
 app.put("/api/page/:pId", updatePage);
+app.delete("/api/page/:pId", deletePage);
+
 
 function createPage(req, res) {
     var page = req.body;
@@ -51,7 +53,8 @@ function updatePage(req, res)   {
     res.json({});
 }
 
-function deletePage(pageId)  {
+function deletePage(req, res)  {
+    var pageId = req.params.pId;
     var index=-1;
     for(var p in pages){
         if(pages[p]._id === pageId) {
@@ -62,5 +65,7 @@ function deletePage(pageId)  {
     if (index > -1) {
         pages.splice(index, 1);
     }
+    res.json({});
+
 }
 

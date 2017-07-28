@@ -18,6 +18,7 @@ app.get("/api/page/:pId/widget", findWidgetsByPageId);
 app.get("/api/widget/:widgetId", findWidgetById);
 app.post("/api/page/:pId/widget",createWidget );
 app.put("/api/widget/:widgetId", updateWidget);
+app.delete("/api/widget/:widgetId", deleteWidget);
 
 function createWidget(req, res) {
     var widget = req.body;
@@ -61,7 +62,8 @@ function updateWidget(req, res) {
     res.json({});
 }
 
-function deleteWidget(widgetId) {
+function deleteWidget(req, res) {
+    var widgetId=req.params.widgetId;
     var index = -1;
     for (var w in widgets) {
         if (widgets[w]._id === widgetId) {
@@ -72,6 +74,7 @@ function deleteWidget(widgetId) {
     if (index > -1) {
         widgets.splice(index, 1);
     }
+    res.json({});
 }
 
 

@@ -46,17 +46,13 @@
                 });
         }
 
-        function deletePage(userId,websiteId,pageId)  {
-            var index=-1;
-            for(var p in pages){
-                if(pages[p]._id === pageId) {
-                    index = p;
-                    break;
-                }
-            }
-            if (index > -1) {
-                pages.splice(index, 1);
-            }
+        function deletePage(pageId)  {
+            var url="/api/page/"+pageId;
+
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
 

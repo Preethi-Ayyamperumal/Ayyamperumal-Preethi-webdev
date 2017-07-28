@@ -50,16 +50,11 @@
         }
 
         function deleteWebsite(websiteId) {
-            var index = -1;
-            for (var w in websites) {
-                if (websites[w]._id === websiteId) {
-                    index = w;
-                    break;
-                }
-            }
-            if (index > -1) {
-                websites.splice(index, 1);
-            }
+            var url="/api/website/"+websiteId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
 

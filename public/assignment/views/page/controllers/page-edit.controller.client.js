@@ -46,8 +46,10 @@
 
 
         function deletePage() {
-            PageService.deletePage(model.pid);
-            window.history.back();
+            PageService.deletePage(model.pid)
+                .then(function (response) {
+                    window.history.back();
+                });
         }
 
         function loadUserProfile() {

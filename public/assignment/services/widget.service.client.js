@@ -47,16 +47,11 @@
         }
 
         function deleteWidget(widgetId) {
-            var index = -1;
-            for (var w in widgets) {
-                if (widgets[w]._id === widgetId) {
-                    index = w;
-                    break;
-                }
-            }
-            if (index > -1) {
-                widgets.splice(index, 1);
-            }
+            var url="/api/widget/"+widgetId;
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;});
+
         }
 
 
