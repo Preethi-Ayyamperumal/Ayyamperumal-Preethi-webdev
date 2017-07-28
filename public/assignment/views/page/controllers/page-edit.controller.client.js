@@ -19,8 +19,14 @@
             model.userId=$routeParams.uid;
             model.wid = $routeParams.wid;
             model.pid = $routeParams.pid;
-            model.pages = PageService.findPageByWebsiteId(model.wid);
-            model.page = PageService.findPageById(model.pid);
+            PageService.findPagesByWebsiteId(model.userId,model.wid)
+                .then(function (pages) {
+                    model.pages =pages;
+                });
+            PageService.findPageById(model.userId,model.wid,model.pid)
+                .then(function (page) {
+                    model.page =page;
+                });
         }
 
         init();
@@ -32,13 +38,15 @@
         }
 
         function updatePage(page) {
-            PageService.updatePage(model.pid, page);
-            showPages();
+            PageService.updatePage(model.userId,model.wid,model.pid, page)
+                .then(function (response) {
+                    showPages();
+                });
         }
 
 
         function deletePage() {
-            PageService.deletePage(model.pid);
+            PageService.deletePage(model.userId,model.wid,model.pid);
             window.history.back();
         }
 

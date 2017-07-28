@@ -15,18 +15,23 @@
         function init() {
             model.userId=$routeParams.uid;
             model.wid = $routeParams.wid;
-            model.pages = PageService.findPageByWebsiteId(model.wid);
+            PageService.findPagesByWebsiteId(model.userId,model.wid)
+                .then(function (pages) {
+                    model.pages =pages;
+                });
         }
 
         init();
 
 
         function addPage(page) {
-            var _page = PageService.createPage(model.wid, page);
-            var pathelements = $location.url().split("/");
-            pathelements.splice(-1, 1);
-            pathelements = pathelements.join("/");
-            $location.url(pathelements);
+            PageService.createPage(model.userId, model.wid, page)
+                .then(function (response) {
+                    var pathelements = $location.url().split("/");
+                    pathelements.splice(-1, 1);
+                    pathelements = pathelements.join("/");
+                    $location.url(pathelements);
+                });
         }
 
         function showWebsites() {
