@@ -14,7 +14,7 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div wbdv-sortable class="container-fluid">
         <div ng-repeat="widget in model.widgets">
             <div class="pav-widget">
                 <div class="pav-widget-toolbar">
@@ -24,8 +24,8 @@
                         <span class="glyphicon glyphicon-align-justify"></span>
                 </div>
                 <div ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
-            </div>
-        </div>
+            </div>        </div>
+
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
