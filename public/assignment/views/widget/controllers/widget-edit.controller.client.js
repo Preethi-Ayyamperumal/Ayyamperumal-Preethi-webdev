@@ -14,6 +14,8 @@
         function init() {
             model.wgid = $routeParams.wgid;
             model.userId = $routeParams.uid;
+            model.websiteId = $routeParams.wid;
+            model.pageId = $routeParams.pid;
             WidgetService.findWidgetById(model.wgid)
                 .then(function(widget){
                         model.widget =widget;
