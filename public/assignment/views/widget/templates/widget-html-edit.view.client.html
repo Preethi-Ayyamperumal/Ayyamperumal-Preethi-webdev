@@ -1,0 +1,53 @@
+<div class="pav">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="" ng-click="model.loadWidgets()"><span
+                        class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="navbar-brand">Widget Edit</a>
+                <p class="navbar-text pull-right">
+                    <a href="" ng-click="model.saveWidget(model.widget)" class="navbar-link"> <span
+                            class="white glyphicon glyphicon-ok pull-right"></span>
+                    </a>
+                </p>
+
+            </div>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+    <div class="container-fluid">
+        <label for="name">Name</label>
+        <input name="name"
+               ng-model="model.widget.name"
+               type="text"
+               placeholder="Widget Name"
+               class="form-control"
+               id="name"/>
+        <label>HTML</label>
+        <div class="padding"
+             ng-model="model.widget.text"
+             text-angular
+             ta-toolbar="[
+             ['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+             ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+             ['indent','outdent'],['html']
+             ]">
+        </div>
+
+        <a class="btn btn-default btn-danger btn-block"
+           ng-click="model.deleteWidget()"
+           role="button">Delete</a>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="navbar-header navbar-right">
+                    <p class="navbar-text pull-right">
+                        <a href="" ng_click="model.loadUserProfile()" class="navbar-link"> <span
+                                class="white glyphicon glyphicon-user pull-right"></span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

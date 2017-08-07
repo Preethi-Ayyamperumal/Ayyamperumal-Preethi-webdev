@@ -13,8 +13,12 @@ body {
     color: white;
     border-color: #286090;
 }
-
-
+.pav .padding{
+    margin-bottom: 5px;
+}
+.pav .padding .btn-toolbar{
+    margin-bottom: 5px;
+}
 .pav .navbar-default {
     background-color: #286090;
     border-color: #286090;

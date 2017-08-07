@@ -1,0 +1,54 @@
+<div class="pav">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="" ng-click="model.loadWidgets()"><span
+                        class="glyphicon glyphicon-chevron-left"></span></a>
+                <a class="navbar-brand">Widget Edit</a>
+                <p class="navbar-text pull-right">
+                    <a href="" ng-click="model.saveWidget(model.widget)" class="navbar-link"> <span
+                            class="white glyphicon glyphicon-ok pull-right"></span>
+                    </a>
+                </p>
+
+            </div>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+    <div class="container-fluid">
+        <label for="name">Name</label>
+        <input name="name"
+               ng-model="model.widget.name"
+               type="text"
+               placeholder="Widget Name"
+               class="form-control"
+               id="name"/>
+        <label for="text">Text</label>
+        <input id="text"
+               ng-model="model.widget.text"
+               placeholder="Text"
+               class="form-control"/>
+        <label for="rows">Rows</label>
+        <input id="rows" ng-model="model.widget.rows" class="form-control" type="number"/>
+        <label for="placeholder">Placeholder</label>
+        <input id="placeholder" ng-model="model.widget.placeholder" class="form-control"/>
+        <div class="row">
+            <div class="col-xs-11"> <input id="formatlabel" readonly type="text" value="Formatted" class="form-control"/></div>
+            <div class="col-xs-1"><input id="formatted" ng-model="model.widget.formatted" type="checkbox"/></div></div>
+        <a class="btn btn-default btn-danger btn-block"
+           ng-click="model.deleteWidget()"
+           role="button">Delete</a>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="navbar-header navbar-right">
+                    <p class="navbar-text pull-right">
+                        <a href="" ng_click="model.loadUserProfile()" class="navbar-link"> <span
+                                class="white glyphicon glyphicon-user pull-right"></span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
