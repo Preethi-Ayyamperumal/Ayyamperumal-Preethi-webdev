@@ -15,10 +15,8 @@ function findAllWidgetsForPage(pageId){
     return  pageModel.findPageById(pageId)
                .then(function (page) {
                    return widgetModel.findAllWidgetsInIDArray(page.widgets);
-               })
-                .then(function (widgets) {
-                           return widgets;
-                });
+               });
+
 
 }
 

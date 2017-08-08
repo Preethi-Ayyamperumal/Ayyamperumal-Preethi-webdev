@@ -2,7 +2,7 @@
      ['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
 ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
 ['indent','outdent']
-]" ></div>
+]" ng-model="widget.text"></div>
 <input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
        placeholder="{{widget.textInput.placeholder}}" value="{{widget.text}}" class="form-control"/>
 <textarea ng-if="!widget.formatted && (widget.rows > 1)"
