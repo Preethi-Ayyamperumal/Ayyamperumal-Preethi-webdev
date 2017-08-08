@@ -31,16 +31,21 @@ function uploadImage(req, res) {
     var mimetype      = myFile.mimetype;
     var widget;
 
-    for (var w in widgets) {
-        if (widgets[w]._id === widgetId) {
-            widget = widgets[w];
-            break;
-        }
-    }
-    widget.url = '/uploads/'+filename;
-    console.log(req.file);
-    var callbackUrl   = "/assignment/#!/profile/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
-    res.redirect(callbackUrl);
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (_widget) {
+            widget = _widget;
+            widget.url = '/uploads/'+filename;
+            widgetModel.updateWidget(widgetId,widget)
+                .then(function (status) {
+                    console.log(req.file);
+                    var callbackUrl   = "/assignment/#!/profile/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget";
+                    res.redirect(callbackUrl);
+                })
+        });
+
+
+
 }
 
 function createWidget(req, res) {
