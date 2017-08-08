@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email:String,
     phone:String,
-    websites:[],
+    websites:[{type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}],
     dateCreated:{type: Date, default: Date.now}
-}, {collection: "users"});
+}, {collection: "user"});
 module.exports = userSchema;

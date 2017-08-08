@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var websiteSchema = require("./website.schema.server");
-var db = require("/../models.server");
 var websiteModel = mongoose.model("WebsiteModel", websiteSchema);
+var userModel = require("../user/user.model.server");
 websiteModel.createWebsiteForUser = createWebsiteForUser;
 websiteModel.findAllWebsitesForUser = findAllWebsitesForUser;
 websiteModel.findWebsiteById = findWebsiteById;
@@ -10,38 +10,38 @@ websiteModel.deleteWebsite = deleteWebsite;
 
 module.exports = websiteModel;
 
-function findUserByCredentials(username, password) {
-    return userModel.findOne({username: username, password: password});
+function findAllWebsitesForUser(userId) {
+    return websiteModel.find({_user: userId});
 }
 
-function findUserByUsername(username) {
-    return userModel.findOne({username: username});
+function updateWebsite(websiteId, website) {
+    return websiteModel.update({_id: websiteId},
+        {$set: website});
 }
 
-function updateUser(userId, user) {
-    return userModel.update({_id: userId},
-        {$set: user});
-}
-
-function deleteUser(userId) {
-    return userModel.findByIdAndRemove(userId);
+function deleteWebsite(userId,websiteId) {
+    return websiteModel
+        .findByIdAndRemove(websiteId)
+        .then(function (status) {
+            return userModel.deleteWebsite(userId, websiteId)
+        });
 }
 
 function createWebsiteForUser(userId, website) {
-    return websiteModel.create(website);
+    website._user=userId;
+    var websiteTmp = null;
+    return websiteModel
+        .create(website)
+        .then(function (websiteDoc) {
+            websiteTmp = websiteDoc;
+            return userModel.addWebsite(userId, websiteDoc._id)
+        })
+        .then(function (userDoc) {
+            return websiteTmp;
+        })
 }
 
-function findUserById(userId) {
-    return userModel.findById(userId);
+function findWebsiteById(websiteId) {
+    return websiteModel.findById(websiteId);
 }
 
-
-createWebsiteForUser(userId, website)
-
-findAllWebsitesForUser(userId)
-
-findWebsiteById(websiteId)
-
-updateWebsite(websiteId, website)
-
-deleteWebsite(websiteId)

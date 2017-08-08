@@ -1,14 +1,7 @@
 var app = require("../../express");
-
-var users = [
-    {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", isAdmin: true  },
-    {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-];
+var userModel = require("../models/user/user.model.server");
 
 // http handlers
-app.get("/api/users", getAllUsers);
 app.get("/api/user/:userId", findUserById);
 app.get("/api/user", findUser);
 app.post("/api/user", createUser);
@@ -18,21 +11,22 @@ function updateUser(req, res) {
     var userId = req.params.userId;
     var user = req.body;
 
-    for(var u in users) {
-        if(users[u]._id === userId) {
-            users[u] = user;
-            res.json(user)
-            return;
-        }
-    }
-    res.status(404).json({ error: 'message' });
+    userModel
+        .updateUser(userId, user)
+        .then(function (status) {
+            res.json(status);
+        }, function (err) {
+            res.status(404).json({ error: 'message' });
+        });
 }
 
 function createUser(req, res) {
     var user = req.body;
-    user._id = (new Date()).getTime() + "";
-    users.push(user);
-    res.json(user);
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            res.json(user);
+        })
 }
 
 function findUser(req, res) {
@@ -41,32 +35,49 @@ function findUser(req, res) {
 
 
     if(username && password) {
-        for(var u in users) {
-            var _user = users[u];
-            if(_user.username === username && _user.password === password) {
-                res.json(_user);
+        userModel
+            .findUserByCredentials(username, password)
+            .then(function (user) {
+                if(user === null)
+                    res.status(200).json({ error: 'message' });
+                else
+                    res.json(user);
                 return;
-            }
-        }
+            }, function (err) {
+                res.status(200).json({ error: 'message' });
+                return;
+            });
     } else if(username) {
-        for(var u in users) {
-            if(users[u].username === username) {
-                res.json(users[u]);
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                if(user === null)
+                    res.status(200).json({ error: 'message' });
+                else
+                    res.json(user);
                 return;
-            }
+            }, function (err) {
+                res.status(200).json({ error: 'message' });
+            });
         }
+        else
+    {
+        res.status(200).json({ error: 'message' });
     }
-    res.status(200).json({ error: 'message' });
 }
 
-function getAllUsers(req, res) {
-    res.json(users);
-}
 
 function findUserById(req, res) {
-    for(var u in users) {
-        if(users[u]._id === req.params.userId) {
-            res.json(users[u]);
-        }
-    }
+
+    userModel
+        .findUserById(req.params.userId)
+        .then(function (user) {
+            if(user === null)
+                res.status(200).json({ error: 'message' });
+            else
+                res.json(user);
+            return;
+        }, function (err) {
+            res.status(200).json({ error: 'message' });
+        });
 }
