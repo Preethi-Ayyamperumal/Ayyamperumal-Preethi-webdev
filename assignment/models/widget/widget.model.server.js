@@ -14,7 +14,8 @@ module.exports = widgetModel;
 function findAllWidgetsForPage(pageId){
     return  pageModel.findPageById(pageId)
                .then(function (page) {
-                   return widgetModel.findAllWidgetsInIDArray(page.widgets);
+                   //return widgetModel.findAllWidgetsInIDArray(page.widgets);
+                   return page.widgets;
                });
 
 
