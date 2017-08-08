@@ -65,7 +65,7 @@
         }
 
         function deleteWebsite() {
-            WebsiteService.deleteWebsite(model.wid)
+            WebsiteService.deleteWebsite(model.userId,model.wid)
                 .then(function (response) {
                     window.history.back();
                 });
