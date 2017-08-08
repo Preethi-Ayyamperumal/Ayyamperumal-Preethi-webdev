@@ -27,7 +27,7 @@
         function getWidgetIncludeUrl() {
 
             if (model.widget) {
-                model.widgetType = model.widget.widgetType;
+                model.widgetType = model.widget.type;
                 return "views/widget/templates/widget-" + model.widgetType.toLowerCase() + "-edit.view.client.html";
             }
         }
@@ -46,7 +46,7 @@
         }
 
         function deleteWidget() {
-            WidgetService.deleteWidget(model.wgid)
+            WidgetService.deleteWidget(model.pageId,model.wgid)
             .then(function(resp){
                 loadWidgets();
             });

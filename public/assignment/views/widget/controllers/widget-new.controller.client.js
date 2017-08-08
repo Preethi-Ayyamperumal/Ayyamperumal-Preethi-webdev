@@ -20,7 +20,7 @@
 
         function chooseWidget(type) {
             var widget = {};
-            widget.widgetType = type;
+            widget.type = type;
             WidgetService.createWidget(model.pid, widget)
                 .then(function (_widget) {
                     var pathelements = $location.url().split("/");

@@ -1,18 +1,7 @@
 var app = require("../../express");
 var app2 = require("multer");
-var widgets = [
-    {"_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
-    {"_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    {
-        "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-        "url": "http://lorempixel.com/400/200/"
-    },
-    {"_id": "567", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    {
-        "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-        "url": "https://youtu.be/AM2Ivdi9c4E"
-    }
-];
+var widgetModel = require("../models/widget/widget.model.server");
+
 var upload = app2({ dest:__dirname+'/../../public/uploads' });
 
 // http handlers
@@ -21,7 +10,7 @@ app.get("/api/widget/:widgetId", findWidgetById);
 app.post("/api/page/:pId/widget",createWidget );
 app.put("/api/page/:pId/widget",sortWidgets);
 app.put("/api/widget/:widgetId", updateWidget);
-app.delete("/api/widget/:widgetId", deleteWidget);
+app.delete("/api/page/:pId/widget/:widgetId", deleteWidget);
 app.post ("/api/upload", upload.single('myFile'), uploadImage);
 
 function uploadImage(req, res) {
@@ -56,36 +45,34 @@ function uploadImage(req, res) {
 
 function createWidget(req, res) {
     var widget = req.body;
-    widget._id = (new Date()).getTime() + "";
-    widgets.push(widget);
-    res.json(widget);
+    var pageId=req.params.pId;
+
+    widgetModel.createWidget(pageId,widget)
+        .then(function (widget) {
+            res.json(widget);
+        });
 }
 
 function findWidgetsByPageId(req, res) {
     var pageId=req.params.pId;
-    var pageWidgets = [];
-    for (var w in widgets) {
-        if (widgets[w].pageId === pageId) {
-            pageWidgets.push(widgets[w]);
-        }
-    }
-    res.json(pageWidgets);
+    widgetModel.findAllWidgetsForPage(pageId)
+        .then(function (widgets) {
+            res.json(widgets);
+        });
 
 }
 
 function findWidgetById(req, res) {
     var widgetId=req.params.widgetId;
-    for (var w in widgets) {
-        if (widgets[w]._id === widgetId) {
-            res.json(widgets[w]);
-            return;
-        }
-    }
-    res.json({});
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget) {
+            return res.json(widget);
+        })
 }
 
 function sortWidgets(req, res) {
-    var startIndex = req.query.initial;
+   /* var startIndex = req.query.initial;
     var endIndex = req.query.final;
     if (startIndex === endIndex)
     {
@@ -117,34 +104,46 @@ function sortWidgets(req, res) {
     pageWidgets.splice(startIndex,1);
     pageWidgets.splice(endIndex,0,item);
     widgets=widgets.concat(pageWidgets);
-    res.json({});
+    res.json({});*/
+
+    var startIndex = req.query.initial;
+    var endIndex = req.query.final;
+    if (startIndex === endIndex)
+    {
+        res.json({});
+        return;
+    }
+    var pageId=req.params.pId;
+    widgetModel
+        .reorderWidget(pageId,startIndex,endIndex)
+        .then(function (status) {
+            res.json({});
+        })
+
 }
 
 function updateWidget(req, res) {
     var widgetId=req.params.widgetId;
     var widget = req.body;
-    for (var w in widgets) {
-        if (widgets[w]._id === widgetId) {
-            widgets[w] = widget;
-            break;
-        }
-    }
-    res.json({});
+
+    widgetModel
+        .updateWidget(widgetId, widget)
+        .then(function (status) {
+            res.json(status);
+        }, function (err) {
+            res.status(404).json({ error: 'message' });
+        });
 }
 
 function deleteWidget(req, res) {
+    var pageId=req.params.pId;
     var widgetId=req.params.widgetId;
-    var index = -1;
-    for (var w in widgets) {
-        if (widgets[w]._id === widgetId) {
-            index = w;
-            break;
-        }
-    }
-    if (index > -1) {
-        widgets.splice(index, 1);
-    }
-    res.json({});
+    widgetModel
+        .deleteWidget(pageId,widgetId)
+        .then(function (status) {
+            res.json(status);
+        });
+
 }
 
 
