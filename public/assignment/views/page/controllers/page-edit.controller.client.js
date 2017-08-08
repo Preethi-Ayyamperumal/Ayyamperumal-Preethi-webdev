@@ -46,7 +46,7 @@
 
 
         function deletePage() {
-            PageService.deletePage(model.pid)
+            PageService.deletePage(model.wid,model.pid)
                 .then(function (response) {
                     window.history.back();
                 });

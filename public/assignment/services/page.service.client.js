@@ -46,8 +46,8 @@
                 });
         }
 
-        function deletePage(pageId)  {
-            var url="/api/page/"+pageId;
+        function deletePage(websiteID,pageId)  {
+            var url="/api/website/"+websiteID+"/page/"+pageId;
 
             return $http.delete(url)
                 .then(function (response) {
