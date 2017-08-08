@@ -10,7 +10,7 @@
         model.loadWidgets = loadWidgets;
         model.deleteWidget = deleteWidget;
         model.loadUserProfile = loadUserProfile;
-
+        model.searcFlickr=searcFlickr;
         function init() {
             model.wgid = $routeParams.wgid;
             model.userId = $routeParams.uid;
@@ -54,6 +54,9 @@
 
         function loadUserProfile() {
             $location.url("/profile/" + model.userId);
+        }
+        function searcFlickr() {
+            $location.url($location.url() + "/flickr");
         }
     }
 })();
