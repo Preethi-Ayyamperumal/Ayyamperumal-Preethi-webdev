@@ -58,13 +58,24 @@ function addWidget(pageId,widget) {
 }
 
 function deleteWidget(pageId,widgetId) {
-    return pageModel
+  /*  return pageModel
         .findById(pageId)
         .then(function (page) {
             var index = page.widgets.indexOf(widgetId);
             page.widgets.splice(index, 1);
             return page.save();
-        });
+        });*/
+
+    return pageModel.findByIdAndUpdate(pageId,
+        {
+            '$pull': {
+                "widgets": { '_id': widgetId}
+            }
+        },
+        function(err,doc) {
+            return doc;
+        }
+    );
 }
 
 function updateWidget(widgetId,widget) {
@@ -84,7 +95,7 @@ function updateWidget(widgetId,widget) {
     //         return page.save();
     //     });
 
-    pageModel.findOneAndUpdate(
+    return pageModel.findOneAndUpdate(
         {"_id" : widget._page ,"widgets._id" : widgetId},
         {
             "$set": {
@@ -92,10 +103,9 @@ function updateWidget(widgetId,widget) {
             }
         },
         function(err,doc) {
-            console.log(doc);
-            console.log(err);
+            return doc;
         }
-    )
+    );
 }
 
 
