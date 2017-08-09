@@ -58,14 +58,6 @@ function addWidget(pageId,widget) {
 }
 
 function deleteWidget(pageId,widgetId) {
-  /*  return pageModel
-        .findById(pageId)
-        .then(function (page) {
-            var index = page.widgets.indexOf(widgetId);
-            page.widgets.splice(index, 1);
-            return page.save();
-        });*/
-
     return pageModel.findByIdAndUpdate(pageId,
         {
             '$pull': {
@@ -79,21 +71,6 @@ function deleteWidget(pageId,widgetId) {
 }
 
 function updateWidget(widgetId,widget) {
-    // return pageModel
-    //     .findById(widget._page)
-    //     .then(function (page) {
-    //
-    //         var index =-1;
-    //         for(var w in page.widgets) {
-    //                 if(page.widgets[w].id === widgetId )
-    //                 {
-    //                     index= w;
-    //                     break;
-    //                 }
-    //         }
-    //         page.widgets[index]=widget;
-    //         return page.save();
-    //     });
 
     return pageModel.findOneAndUpdate(
         {"_id" : widget._page ,"widgets._id" : widgetId},

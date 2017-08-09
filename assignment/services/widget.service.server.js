@@ -77,39 +77,6 @@ function findWidgetById(req, res) {
 }
 
 function sortWidgets(req, res) {
-   /* var startIndex = req.query.initial;
-    var endIndex = req.query.final;
-    if (startIndex === endIndex)
-    {
-        res.json({});
-        return;
-    }
-    var pageId=req.params.pId;
-    var widgetId=req.params.widgetId;
-    var newIndex = -1;
-    var item = -1;
-    var currentIndex = -1;
-
-    var pageWidgets = [];
-    var pageIndices = [];
-
-    for (var w in widgets) {
-        if (widgets[w].pageId === pageId) {
-            pageWidgets.push(widgets[w]);
-            pageIndices.push(w);
-        }
-    }
-    widgets = widgets.filter(function (widget) {
-        var index = -1;
-        index = pageWidgets.indexOf(widget);
-        return (index === -1);
-    });
-
-    item= pageWidgets[startIndex];
-    pageWidgets.splice(startIndex,1);
-    pageWidgets.splice(endIndex,0,item);
-    widgets=widgets.concat(pageWidgets);
-    res.json({});*/
 
     var startIndex = req.query.initial;
     var endIndex = req.query.final;
