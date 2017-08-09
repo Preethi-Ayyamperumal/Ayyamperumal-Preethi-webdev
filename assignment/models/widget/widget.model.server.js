@@ -35,7 +35,11 @@ function findAllWidgetsInIDArray(widgetIDs){
 
 function updateWidget(widgetId, widget) {
     return widgetModel.update({_id: widgetId},
-        {$set: widget});
+        {$set: widget})
+        .then(function(status){
+            return pageModel.updateWidget(widgetId,widget);
+
+        })
 }
 
 function deleteWidget(pageId,widgetId){
@@ -53,7 +57,7 @@ function createWidget(pageId, widget){
         .create(widget)
         .then(function (widgetDoc) {
             widgetTmp = widgetDoc;
-            return pageModel.addWidget(pageId, widgetDoc._id)
+            return pageModel.addWidget(pageId, widgetDoc)
         })
         .then(function (pageDoc) {
             return widgetTmp;

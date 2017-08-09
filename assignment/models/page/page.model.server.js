@@ -9,6 +9,7 @@ pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
 pageModel.addWidget = addWidget;
 pageModel.deleteWidget = deleteWidget;
+pageModel.updateWidget = updateWidget;
 
 module.exports = pageModel;
 
@@ -47,11 +48,11 @@ function findPageById(pageId) {
     return pageModel.findById(pageId);
 }
 
-function addWidget(pageId,widgetId) {
+function addWidget(pageId,widget) {
     return pageModel
         .findById(pageId)
         .then(function (page) {
-                page.widgets.push(widgetId);
+                page.widgets.push(widget);
             return page.save();
         });
 }
@@ -64,6 +65,37 @@ function deleteWidget(pageId,widgetId) {
             page.widgets.splice(index, 1);
             return page.save();
         });
+}
+
+function updateWidget(widgetId,widget) {
+    // return pageModel
+    //     .findById(widget._page)
+    //     .then(function (page) {
+    //
+    //         var index =-1;
+    //         for(var w in page.widgets) {
+    //                 if(page.widgets[w].id === widgetId )
+    //                 {
+    //                     index= w;
+    //                     break;
+    //                 }
+    //         }
+    //         page.widgets[index]=widget;
+    //         return page.save();
+    //     });
+
+    pageModel.findOneAndUpdate(
+        {"_id" : widget._page ,"widgets._id" : widgetId},
+        {
+            "$set": {
+                "widgets.$": widget
+            }
+        },
+        function(err,doc) {
+            console.log(doc);
+            console.log(err);
+        }
+    )
 }
 
 
